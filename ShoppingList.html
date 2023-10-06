@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingListApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping List</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="ShoppingListController as ctrl">
+  <h1>Shopping List</h1>
+  <form ng-submit="ctrl.addItem()">
+    <input type="text" placeholder="Add items" ng-model="ctrl.newItem">
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    <li ng-repeat="item in ctrl.items">
+      {{ item }}
+      <button ng-click="ctrl.removeItem(item)">Remove</button>
+    </li>
+  </ul>
+  <script>
+    angular.module("ShoppingListApp", []).controller("ShoppingListController", function () {
+      var ctrl = this;
+      ctrl.items = [];
+      ctrl.newItem = "";
+      ctrl.addItem = function () {
+        if (ctrl.newItem !== "") {
+          ctrl.items.push(ctrl.newItem);
+          ctrl.newItem = "";
+        }
+      };
+      ctrl.removeItem = function (item) {
+        var index = ctrl.items.indexOf(item);
+        if (index !== -1) {
+          ctrl.items.splice(index, 1);
+        }
+      };
+    });
+  </script>
+</body>
+</html>

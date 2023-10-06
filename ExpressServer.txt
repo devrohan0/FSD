@@ -1,0 +1,29 @@
+Step 1: Set up a new project folder and initialize npm.
+Create a new project folder, navigate to it using the terminal or command prompt, 
+and run the
+following command to initialize npm and create a package.json file:
+npm init -y
+Step 2: Install Express.
+Install the Express package using npm:
+npm install express
+Step 3: Create the main server file.
+Create a file named `app.js` (or any other name you prefer) in the project folder. 
+This file will
+contain the code for setting up the Express server.
+Step 4: Set up the Express server in app.js.
+Open the `app.js` file and add the following code:
+
+
+const express = require('express');
+const app = express();
+app.get('/', (req, res) => {
+res.send('Hello, World!');});
+const port = 3000;
+app.listen(port, () => {
+console.log(`Server is running on http://localhost:${port}`);});
+
+
+Step 5: Run the server.
+Save the `app.js` file and go back to the terminal or command prompt. Run the 
+following
+command to start the server:node app.js
